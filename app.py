@@ -5,14 +5,15 @@ import gdown
 st.title("Censorship Index: Article Analysis")
 
 # Download dataset from Google Drive
-url = "https://drive.google.com/uc?id=1-GpHnMqaciU9Pr3sEwIRPP_Bo8JS9_fq"
-output = "censorship_data.csv"
-gdown.download(url, output, quiet=False)
+# url = "https://drive.google.com/uc?id=1-GpHnMqaciU9Pr3sEwIRPP_Bo8JS9_fq"
+output = "compressed_zstd.parquet"
+# gdown.download(url, output, quiet=False)
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(output, parse_dates=["published_dt"])
-    df.to_parquet("censorship_data.parquet", index=False)
+    # df = pd.read_csv(output, parse_dates=["published_dt"])
+    df = pd.read_parquet(output)
+    # df.to_parquet("censorship_data.parquet", index=False)
     return df
 
 df = load_data()
