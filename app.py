@@ -53,20 +53,20 @@ if source_filter:
 
 # Показываем первые 1000 строк таблицы
 st.dataframe(filtered_df.head(1000))
-
-# Считаем, сколько статей в каждом месяце
-st.subheader("Article Count Over Time")
-articles_per_month = filtered_df.groupby(
-    filtered_df["published_dt"].dt.to_period("M")
-).size()
-
-# Рисуем линейный график
-st.line_chart(articles_per_month)
-
-# Даём кнопку для скачивания отфильтрованных данных в CSV
-st.download_button(
-    "Download Filtered Data",
-    filtered_df.to_csv(index=False),
-    "filtered_data.csv",
-    "text/csv",
-)
+#
+# # Считаем, сколько статей в каждом месяце
+# st.subheader("Article Count Over Time")
+# articles_per_month = filtered_df.groupby(
+#     filtered_df["published_dt"].dt.to_period("M")
+# ).size()
+#
+# # Рисуем линейный график
+# st.line_chart(articles_per_month)
+#
+# # Даём кнопку для скачивания отфильтрованных данных в CSV
+# st.download_button(
+#     "Download Filtered Data",
+#     filtered_df.to_csv(index=False),
+#     "filtered_data.csv",
+#     "text/csv",
+# )
